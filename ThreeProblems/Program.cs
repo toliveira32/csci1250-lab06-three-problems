@@ -8,6 +8,9 @@
 * practices decisions and one of the four loops.
 */
 
+// random number we are using to have a seed for the dice roll 
+Random rng = new Random(4000);
+
 //menu layout information for the user to see
 Console.WriteLine("=== CSCI 1250 Lab 06 ===");
 Console.WriteLine("1. The Grade Checker");
@@ -37,9 +40,9 @@ while (choice < 1 || choice > 5)
 
 if (choice == 1 || choice == 4)
 {
-    // === Exercise 1: The Grade Checker ===
+    // Exercise 1
     Console.WriteLine("=== Exercise 1: The Grade Checker ===");
-
+    // variable score that stores the score the user will input, same as the choice one on the menu
     int score = 2003;
 
     // this one i would say its pretty much like the other while loop, we dont know how many tries the user is gonna need to get it right so the for loop wouldnt work, its the same logic as the menu one basically
@@ -79,12 +82,54 @@ if (choice == 1 || choice == 4)
 if (choice == 2 || choice == 4)
 {
     // Exercise 2
-    Console.WriteLine("(dice table)");
+    Console.WriteLine("=== Exercise 2: The Dice Table ===");
+    
+    //variables we used to stored how many rolls the user has done and how many times he has won, we need to know as well if the user wants to keep on rolling and i choose to do it while stacking it on a variable string stacking his yes or no answer inside to give to our do while loop
+    int rolls = 0;
+    int wins = 0;
+    string again = "";
+
+    // in this case like the professor said on the example, we need to always roll the dices anyway, even if the user doesnt want to keep on rolling more, we are always forced to roll at least once, so "we need to DO something(rolling the dice) WHILE the user answer is still yes" 
+    do
+    {
+        int die1 = rng.Next(1, 7);
+        int die2 = rng.Next(1, 7);
+        int total = die1 + die2;
+        rolls++;
+
+        Console.Write($"Roll {rolls}: {die1} and {die2}, total {total}.");
+
+        if (die1 == 1 && die2 == 1)
+        {
+            Console.WriteLine(" Snake eyes.");
+        }
+        else if (die1 == die2)
+        {
+            Console.WriteLine(" Doubles!");
+        }
+        else if (total == 7 || total == 11)
+        {
+            Console.WriteLine(" A winner.");
+            wins++;
+        }
+        else
+        {
+            Console.WriteLine();
+        }
+
+        Console.Write("Roll again? (y/n): ");
+        again = Console.ReadLine();
+    } 
+    while (again == "y");
+
+    Console.WriteLine($"You rolled {rolls} times and won {wins}.");
 }
 
 if (choice == 3 || choice == 4)
 {
     // Exercise 3
-    Console.WriteLine("(score report)");
+    Console.WriteLine("=== Exercise 3: The Score Report ===");
+
+    int[] scores = new int[5];
 }
 
