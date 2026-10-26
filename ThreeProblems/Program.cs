@@ -37,8 +37,43 @@ while (choice < 1 || choice > 5)
 
 if (choice == 1 || choice == 4)
 {
-    // Exercise 1
-    Console.WriteLine("(grade checker)");
+    // === Exercise 1: The Grade Checker ===
+    Console.WriteLine("=== Exercise 1: The Grade Checker ===");
+
+    int score = 2003;
+
+    // this one i would say its pretty much like the other while loop, we dont know how many tries the user is gonna need to get it right so the for loop wouldnt work, its the same logic as the menu one basically
+    while (score < 0 || score > 100)
+    {
+        Console.Write("Score: ");
+        score = Convert.ToInt32(Console.ReadLine());
+
+        if (score < 0 || score > 100)
+        {
+            Console.WriteLine("A score must be between 0 and 100.");
+        }
+    }
+
+    if (score >= 90)
+    {
+        Console.WriteLine(score + " earns an A.");
+    }
+    else if (score >= 80)
+    {
+        Console.WriteLine(score + " earns a B.");
+    }
+    else if (score >= 70)
+    {
+        Console.WriteLine(score + " earns a C.");
+    }
+    else if (score >= 60)
+    {
+        Console.WriteLine(score + " earns a D.");
+    }
+    else
+    {
+        Console.WriteLine(score + " earns an F.");
+    }
 }
 
 if (choice == 2 || choice == 4)
