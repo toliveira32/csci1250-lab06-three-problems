@@ -11,6 +11,12 @@
 // random number we are using to have a seed for the dice roll 
 Random rng = new Random(4000);
 
+//variable choice that stacks the value the user inserts at the menu
+int choice = 0;
+
+//do
+//{
+    //choice = 0;
 //menu layout information for the user to see
 Console.WriteLine("=== CSCI 1250 Lab 06 ===");
 Console.WriteLine("1. The Grade Checker");
@@ -19,8 +25,7 @@ Console.WriteLine("3. The Score Report");
 Console.WriteLine("4. All three");
 Console.WriteLine("5. Quit");
 
-//variable choice that stacks the value the user inserts at the menu
-int choice = 0;
+
 
 /*do
 {
@@ -36,7 +41,13 @@ while (choice < 1 || choice > 5)
 {
     Console.Write("choose 1 through 5: ");
     choice = Convert.ToInt32(Console.ReadLine());
+
+     if (choice < 1 || choice > 5)
+    {
+        Console.WriteLine("Choose a number from 1 to 5.");
+    }
 }
+
 
 if (choice == 1 || choice == 4)
 {
@@ -120,6 +131,8 @@ if (choice == 2 || choice == 4)
         Console.Write("Roll again? (y/n): ");
         again = Console.ReadLine();
     } 
+    
+    // typed above on the do, what the while is for, we are telling the computer that while the string has y inside(prompted by the user) do keep displaying the console.write we have bellow that displays how many rolls and how many times the user has won, the usage of the while is best in my opinion because it will keep on repeating everything we want until the user changes his answer from the prompted to no more rolling dices
     while (again == "y");
 
     Console.WriteLine($"You rolled {rolls} times and won {wins}.");
@@ -130,6 +143,47 @@ if (choice == 3 || choice == 4)
     // Exercise 3
     Console.WriteLine("=== Exercise 3: The Score Report ===");
 
+    //array to store the scores int variables
     int[] scores = new int[5];
+
+    // this for loop we use to progress through the array, using the for loop like it was told from the lab instructions, but this is the standard way of progressing through arrays even if the instructions didnt meantion it
+    for (int i = 0; i < scores.Length; i++)
+    {
+        Console.Write($"Score {i + 1}: ");
+        scores[i] = Convert.ToInt32(Console.ReadLine());
+    }
+
+    //variables needed to do calculations and display information of the scores the user inserted
+    int totalScores = 0;
+    int highest = scores[0];
+    int passing = 0;
+
+    //this foreach the intrunctions said to use it as well, like it says we are using it because we dont really care what position scores are, so we can do everything in one go and thats what a foreach is for stated by the instructions
+    foreach (int score in scores)
+    {
+        totalScores += score;
+
+        if (score > highest)
+        {
+            highest = score;
+        }
+
+        if (score >= 60)
+        {
+            passing++;
+        }
+    }
+    
+    //calculations for the average variable
+    double average = Convert.ToDouble(totalScores) / scores.Length;
+
+    //displaying the information and calculations to ther user to see
+    Console.WriteLine("\nScores entered: " + scores.Length);
+    Console.WriteLine("Total: " + totalScores);
+    Console.WriteLine("Average: " + average.ToString("F1"));
+    Console.WriteLine("Highest: " + highest);
+    Console.WriteLine($"Passing: {passing} of {scores.Length}");
 }
+//} while (choice != 5);
+//Console.WriteLine("Goodbye.");
 
