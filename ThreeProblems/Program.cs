@@ -14,27 +14,16 @@ Random rng = new Random(4000);
 //variable choice that stacks the value the user inserts at the menu
 int choice = 0;
 
-//do
-//{
-    //choice = 0;
-//menu layout information for the user to see
+do
+{
+    choice = 0;
+//menu layout information for the user to see, the menu has gives the user 5 choices: to do a grade checker, dice table, score report, and was well the option to do all 3 task, we give the user the option to quit the menu as well
 Console.WriteLine("=== CSCI 1250 Lab 06 ===");
 Console.WriteLine("1. The Grade Checker");
 Console.WriteLine("2. The Dice Table");
 Console.WriteLine("3. The Score Report");
 Console.WriteLine("4. All three");
 Console.WriteLine("5. Quit");
-
-
-
-/*do
-{
-// print the five lines
-// validate the choice
-// the three if statements
-} while (choice != 5);
-Console.WriteLine("Goodbye.");
-*/
 
 //i choose the while loop because i think it was the only one we could use for this situation, the for loop woudlnt work since i dont know for how long i want to run the loop, so i used the while, since we are waiting for the user right input, works just as english "while the user is not typing this numbers make him do something"
 while (choice < 1 || choice > 5)
@@ -51,7 +40,7 @@ while (choice < 1 || choice > 5)
 
 if (choice == 1 || choice == 4)
 {
-    // Exercise 1
+    // Exercise 1: this exercise we are doing a grade checker, we are basically asking the user to give us his grade score and we need to return to him what the corresponding of it would be on a letter grading system, we do that by placing ranges of s integers for each letter
     Console.WriteLine("=== Exercise 1: The Grade Checker ===");
     // variable score that stores the score the user will input, same as the choice one on the menu
     int score = 2003;
@@ -92,7 +81,7 @@ if (choice == 1 || choice == 4)
 
 if (choice == 2 || choice == 4)
 {
-    // Exercise 2
+    // Exercise 2: on exercise 2 we are rolling dices and asking the user if he wants to keep on rolling dices after his first try, we give him the option to win if he gets the values of 7 or 1, and some other inputs if he gets double the number on the dice
     Console.WriteLine("=== Exercise 2: The Dice Table ===");
     
     //variables we used to stored how many rolls the user has done and how many times he has won, we need to know as well if the user wants to keep on rolling and i choose to do it while stacking it on a variable string stacking his yes or no answer inside to give to our do while loop
@@ -140,7 +129,7 @@ if (choice == 2 || choice == 4)
 
 if (choice == 3 || choice == 4)
 {
-    // Exercise 3
+    // Exercise 3: on this exercise we are giving the user a score report, basically we ask the user for 5 scores and return him information about them, their average, highest score, total scores and how many people passed
     Console.WriteLine("=== Exercise 3: The Score Report ===");
 
     //array to store the scores int variables
@@ -184,6 +173,6 @@ if (choice == 3 || choice == 4)
     Console.WriteLine("Highest: " + highest);
     Console.WriteLine($"Passing: {passing} of {scores.Length}");
 }
-//} while (choice != 5);
-//Console.WriteLine("Goodbye.");
+} while (choice != 5);
+Console.WriteLine("Goodbye.");
 
